@@ -23,9 +23,18 @@ function RestaurantInfo({ restaurant = {} }) {
 const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
+    borderColor: "#fff",
     borderRadius: 5,
     backgroundColor: "#fff",
     height: 220,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
   },
   img1: {
     width: "95%",
