@@ -1,51 +1,54 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, Image } from "react-native";
+import { SvgXml } from "react-native-svg";
+import star from "../../../../assets/star";
+import open from "../../../../assets/open";
+import styles from "./restaurants-info.component.styles";
 
 function RestaurantInfo({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
-    icon,
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
     address = "100 some random street",
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily,
+    isClosedTemporarily = true,
   } = restaurant;
+
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
+
   return (
-    <View style={styles.card}>
-      <Image style={styles.img1} key={name} source={{ uri: photos[0] }} />
-      <Text style={styles.title}>{name}</Text>
-    </View>
+    <>
+      <View style={styles.card}>
+        <Image style={styles.img1} key={name} source={{ uri: photos[0] }} />
+        <View>
+          <Text style={styles.title}>{name}</Text>
+          <View style={styles.section}>
+            <View style={styles.row}>
+              {ratingArray.map(() => (
+                <SvgXml xml={star} width={20} height={20} />
+              ))}
+            </View>
+            <View style={styles.sectionEnd}>
+              {isClosedTemporarily && (
+                <Text variant="label" style={styles.Closed}>
+                  CLOSED TEMPORARILY
+                </Text>
+              )}
+              <View style={styles.OpenClose} />
+              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+              <View style={styles.OpenClose} />
+              <Image style={styles.Img2} source={{ uri: icon }} />
+            </View>
+          </View>
+          <Text style={styles.address}>{address}</Text>
+        </View>
+      </View>
+    </>
   );
 }
-const styles = StyleSheet.create({
-  card: {
-    borderWidth: 1,
-    borderColor: "#fff",
-    borderRadius: 5,
-    backgroundColor: "#fff",
-    height: 220,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
-  },
-  img1: {
-    width: "95%",
-    aspectRatio: 16 / 7,
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 8,
-  },
-  title: {
-    padding: 16,
-  },
-});
 
 export default RestaurantInfo;
