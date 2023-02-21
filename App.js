@@ -5,7 +5,7 @@ import RestaurantScreen from "./src/features/restaurants/screens/restaurants.scr
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
@@ -37,31 +37,33 @@ const createScreenOptions = ({ route }) => {
 function App() {
   return (
     <>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={createScreenOptions}
-          tabBarOptions={{
-            activeTintColor: "tomato",
-            inactiveTintColor: "gray",
-          }}
-        >
-          <Tab.Screen
-            name="Restaurant"
-            component={RestaurantScreen}
-            options={{ headerShown: false }}
-          />
-          <Tab.Screen
-            name="Map"
-            component={MapScreen}
-            options={{ headerShown: false }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={SettingsScreen}
-            options={{ headerShown: false }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={createScreenOptions}
+            // tabBarOptions={{
+            //   activeTintColor: "tomato",
+            //   inactiveTintColor: "gray",
+            // }}
+          >
+            <Tab.Screen
+              name="Restaurant"
+              component={RestaurantScreen}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={MapScreen}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{ headerShown: false }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantsContextProvider>
       <ExpoStatusBar style="auto" />
     </>
   );

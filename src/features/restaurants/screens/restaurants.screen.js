@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 //import { Searchbar } from "react-native-paper";
 import {
   StatusBar,
@@ -11,32 +12,22 @@ import {
 import RestaurantInfo from "../components/restaurants-info.component";
 
 export default function RestaurantScreen() {
+  const { error, restaurants } = useContext(RestaurantsContext);
+  console.log(error);
   return (
     <SafeAreaView style={styles.Main}>
       <View style={styles.Main1}>
         <TextInput style={styles.input} placeholder="Searchbar" />
       </View>
       <FlatList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-          { name: 7 },
-          { name: 8 },
-          { name: 9 },
-          { name: 10 },
-          { name: 12 },
-          { name: 13 },
-          { name: 14 },
-        ]}
-        renderItem={() => (
-          <View style={styles.Main2}>
-            <RestaurantInfo />
-          </View>
-        )}
+        data={restaurants}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.Main2}>
+              <RestaurantInfo restaurant={item} />
+            </View>
+          );
+        }}
         keyExtractor={(item) => item.name}
       />
     </SafeAreaView>
@@ -71,6 +62,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 10,
+    elevation: 5,
   },
 });

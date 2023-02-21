@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Text, View, Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
@@ -21,22 +21,20 @@ function RestaurantInfo({ restaurant = {} }) {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <>
+    <Fragment>
       <View style={styles.card}>
         <Image style={styles.img1} key={name} source={{ uri: photos[0] }} />
         <View>
           <Text style={styles.title}>{name}</Text>
           <View style={styles.section}>
             <View style={styles.row}>
-              {ratingArray.map(() => (
-                <SvgXml xml={star} width={20} height={20} />
+              {ratingArray.map((_, index) => (
+                <SvgXml xml={star} width={20} height={20} key={index} />
               ))}
             </View>
             <View style={styles.sectionEnd}>
               {isClosedTemporarily && (
-                <Text variant="label" style={styles.Closed}>
-                  CLOSED TEMPORARILY
-                </Text>
+                <Text style={styles.Closed}>CLOSED TEMPORARILY</Text>
               )}
               <View style={styles.OpenClose} />
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
@@ -47,7 +45,7 @@ function RestaurantInfo({ restaurant = {} }) {
           <Text style={styles.address}>{address}</Text>
         </View>
       </View>
-    </>
+    </Fragment>
   );
 }
 
