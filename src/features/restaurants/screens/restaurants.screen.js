@@ -6,19 +6,16 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  TextInput,
   FlatList,
 } from "react-native";
+import { Search } from "../components/search.components";
 import RestaurantInfo from "../components/restaurants-info.component";
 
-export default function RestaurantScreen() {
-  const { error, restaurants } = useContext(RestaurantsContext);
-  console.log(error);
+export default function RestaurantsScreen() {
+  const { restaurants } = useContext(RestaurantsContext);
   return (
     <SafeAreaView style={styles.Main}>
-      <View style={styles.Main1}>
-        <TextInput style={styles.input} placeholder="Searchbar" />
-      </View>
+      <Search />
       <FlatList
         data={restaurants}
         renderItem={({ item }) => {
