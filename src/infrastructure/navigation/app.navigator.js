@@ -3,7 +3,7 @@ import { Text, StatusBar, SafeAreaView, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
+import { RestaurantsNavigator } from "./restaurants.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ export default function Appnavigator() {
       >
         <Tab.Screen
           name="Restaurant"
-          component={RestaurantsScreen}
+          component={RestaurantsNavigator}
           options={{ headerShown: false }}
         />
         <Tab.Screen
