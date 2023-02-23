@@ -4,7 +4,7 @@ import RestaurantsScreen from "../../features/restaurants/screens/RestaurantsScr
 
 const RestaurantStack = createStackNavigator();
 
-function RestaurantsNavigator() {
+export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator>
       <RestaurantStack.Screen
@@ -14,5 +14,4 @@ function RestaurantsNavigator() {
       />
     </RestaurantStack.Navigator>
   );
-}
-export default RestaurantsNavigator;
+};

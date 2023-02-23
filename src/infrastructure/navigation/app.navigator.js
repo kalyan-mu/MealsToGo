@@ -33,7 +33,7 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-function Appnavigator() {
+export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -61,7 +61,7 @@ function Appnavigator() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
   Main: {
@@ -69,5 +69,3 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
   },
 });
-
-export default Appnavigator;

@@ -2,9 +2,9 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
-import Navigation from "./src/infrastructure/navigation";
+import { Navigation } from "./src/infrastructure/navigation";
 
-function App() {
+export default function App() {
   return (
     <>
       <LocationContextProvider>
@@ -16,5 +16,3 @@ function App() {
     </>
   );
 }
-
-export default App;
