@@ -5,7 +5,7 @@ import { Search } from "../components/search.components";
 import RestaurantInfo from "../components/restaurants-info.component";
 import { styles } from "./restaurants.screen.styles";
 
-export default function RestaurantsScreen() {
+function RestaurantsScreen() {
   const { restaurants } = useContext(RestaurantsContext);
   return (
     <SafeAreaView style={styles.Main}>
@@ -24,3 +24,4 @@ export default function RestaurantsScreen() {
     </SafeAreaView>
   );
 }
+export default RestaurantsScreen;
