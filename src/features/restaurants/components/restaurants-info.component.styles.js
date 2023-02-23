@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     borderRadius: 5,
     backgroundColor: "#fff",
-    height: 240,
+    height: 245,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     aspectRatio: 16 / 7,
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 8,
+    marginLeft: 9,
   },
   title: {
     padding: 1,

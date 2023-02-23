@@ -4,6 +4,7 @@ import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import styles from "./restaurants-info.component.styles";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 function RestaurantInfo({ restaurant = {} }) {
   const {
@@ -24,6 +25,7 @@ function RestaurantInfo({ restaurant = {} }) {
   return (
     <Fragment>
       <View style={styles.card}>
+        <Favourite restaurant={restaurant} />
         <Image style={styles.img1} key={name} source={{ uri: photos[0] }} />
         <View>
           <Text style={styles.title}>{name}</Text>

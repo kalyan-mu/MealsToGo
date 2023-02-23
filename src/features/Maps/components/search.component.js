@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { LocationContext } from "../../../services/location/location.context";
 import { Searchbar } from "react-native-paper";
 
-export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
+export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyWord] = useState(keyword);
   useEffect(() => {
@@ -11,10 +11,8 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
   }, [keyword]);
 
   return (
-    <View style={styles.Main1}>
+    <View style={styles.Map1}>
       <Searchbar
-        icon={isFavouritesToggled ? "heart" : "heart-outline"}
-        onIconPress={onFavouritesToggle}
         style={styles.input}
         placeholder="Search for a location"
         value={searchKeyword}
@@ -30,9 +28,12 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
 };
 
 const styles = StyleSheet.create({
-  Main1: {
+  Map1: {
     padding: 16,
-    justifyContent: "top",
+    position: "absolute",
+    zIndex: 999,
+    top: 40,
+    width: "100%",
   },
   input: {
     paddingLeft: 10,
