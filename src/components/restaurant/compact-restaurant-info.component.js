@@ -4,8 +4,8 @@ import { WebView } from "react-native-webview";
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
-  const Img = isAndroid ? WebView : Image;
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  const Img = isAndroid && isMap ? WebView : Image;
   return (
     <View>
       <Img style={styles.img2} source={{ uri: restaurant.photos[0] }} />
