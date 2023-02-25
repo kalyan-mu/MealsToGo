@@ -76,5 +76,6 @@ const styles = StyleSheet.create({
     height: "40%",
     position: "absolute",
     top: 30,
+    padding: 8,
   },
 });

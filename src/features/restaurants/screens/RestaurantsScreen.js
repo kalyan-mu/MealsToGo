@@ -6,6 +6,7 @@ import { Search } from "../components/search.components";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
 import RestaurantInfo from "../components/restaurants-info.component";
 import { styles } from "./restaurants.screen.styles";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 function RestaurantsScreen({ navigation }) {
   const { restaurants } = useContext(RestaurantsContext);
@@ -34,7 +35,9 @@ function RestaurantsScreen({ navigation }) {
               }
             >
               <View style={styles.Main2}>
-                <RestaurantInfo restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfo restaurant={item} />
+                </FadeInView>
               </View>
             </TouchableOpacity>
           );
