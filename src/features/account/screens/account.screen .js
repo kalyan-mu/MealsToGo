@@ -2,14 +2,14 @@ import React from "react";
 import { View, StyleSheet, ImageBackground, Text } from "react-native";
 import { Button } from "react-native-paper";
 import image from "../../../../assets/home_bg.jpg";
-import LottieView from "lottie-react-native";
+//import LottieView from "lottie-react-native";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <>
       <View style={styles.BG}>
         <ImageBackground style={styles.IMG1} source={image}>
-          <View style={styles.ani}>
+          {/* <View style={styles.ani}>
             <LottieView
               key="animation"
               autoPlay
@@ -17,7 +17,7 @@ export const AccountScreen = ({ navigation }) => {
               resizeMode="cover"
               source={require("../../../../assets/watermelon")}
             />
-          </View>
+          </View> */}
           <Text style={styles.title}>Meals To Go</Text>
           <View style={styles.text}>
             <Button

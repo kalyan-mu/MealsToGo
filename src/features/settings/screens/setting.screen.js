@@ -21,9 +21,11 @@ export const SettingsScreen = ({ navigation }) => {
     setPhoto(photoUri);
   };
 
-  useFocusEffect(() => {
-    getProfilePicture(user);
-  }, [user]);
+  useFocusEffect(
+    React.useCallback(() => {
+      getProfilePicture(user);
+    }, [user])
+  );
 
   return (
     <SafeAreaView style={styles.Main}>
@@ -40,7 +42,7 @@ export const SettingsScreen = ({ navigation }) => {
             />
           )}
         </TouchableOpacity>
-        <View style={styles.Main2}>
+        <View>
           <Text style={styles.Main3}>{user.email}</Text>
         </View>
       </View>
@@ -74,12 +76,8 @@ const styles = StyleSheet.create({
   Main1: {
     alignItems: "center",
   },
-  Main2: {
-    position: "absolute",
-    top: 10,
-  },
   Main3: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
   },
 });

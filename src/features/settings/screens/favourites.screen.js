@@ -35,7 +35,7 @@ export const FavouritesScreen = ({ navigation }) => {
     </SafeAreaView>
   ) : (
     <SafeAreaView style={styles.Main}>
-      <Text>No favoutites Yet</Text>
+      <Text>No Favoutites Yet</Text>
     </SafeAreaView>
   );
 };
