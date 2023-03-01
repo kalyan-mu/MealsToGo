@@ -2,11 +2,12 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsNavigator } from "./restaurants.navigator";
-import { SettingsNavigator } from "./settins.navigator";
+import { SettingsNavigator } from "./settings.navigator";
 import { MapScreen } from "../../features/Maps/screens/map.screen";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favorites.context";
+import { SafeAreaView, Text, StyleSheet, StatusBar } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +15,7 @@ const TAB_ICON = {
   Restaurant: "md-restaurant",
   Map: "md-map",
   Settings: "md-settings",
+  Cart: "cart",
 };
 
 const createScreenOptions = ({ route }) => {
@@ -23,6 +25,13 @@ const createScreenOptions = ({ route }) => {
       <Ionicons name={iconName} size={size} color={color} />
     ),
   };
+};
+const Cart = () => {
+  return (
+    <SafeAreaView style={styles.Main}>
+      <Text style={styles.Main1}>Cart is Empty</Text>
+    </SafeAreaView>
+  );
 };
 
 export const AppNavigator = () => {
@@ -43,6 +52,11 @@ export const AppNavigator = () => {
               options={{ headerShown: false }}
             />
             <Tab.Screen
+              name="Cart"
+              component={Cart}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
               name="Map"
               component={MapScreen}
               options={{ headerShown: false }}
@@ -58,3 +72,15 @@ export const AppNavigator = () => {
     </FavouritesContextProvider>
   );
 };
+
+const styles = StyleSheet.create({
+  Main: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  Main1: {
+    fontSize: 20,
+  },
+});
